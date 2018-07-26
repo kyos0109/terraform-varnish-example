@@ -10,7 +10,7 @@ resource "docker_container" "varnish" {
   restart = "always"
   volumes {
     container_path = "/etc/varnish/default.vcl"
-    host_path = "/Users/inhdddd/Documents/Docker/varnish/default.vcl"
+    host_path = "./conf/varnish/default.vcl"
     read_only = true
   }
   env = [ "VARNISHD_PARAMS=-i node${count.index + 1}" ]
@@ -24,7 +24,7 @@ resource "docker_container" "nginx" {
   restart = "always"
   volumes {
     container_path = "/etc/nginx/conf.d/default.conf"
-    host_path = "/Users/inhdddd/Documents/Docker/nginx/default.conf"
+    host_path = "./conf/nginx/default.conf"
     read_only = true
   }
   networks = [ "${docker_network.test.name}" ]
